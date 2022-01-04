@@ -8,6 +8,7 @@ import {
 } from '@loopback/rest-explorer';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
+import {MysqlDataSource} from './datasources';
 import {MySequence} from './sequence';
 
 export {ApplicationConfig};
@@ -47,5 +48,8 @@ export class LbStarterApplication extends BootMixin(
         nested: true,
       },
     };
+
+    // Bind datasource
+    this.dataSource(MysqlDataSource, 'mysql');
   }
 }
